@@ -17,6 +17,7 @@ class State {
             localStorage.setItem('state', '{}');
         }
         this.state = JSON.parse(localStorage.getItem('state')) || {};
+        console.log(this.state);
         this.ref = firestore.collection('rooms').doc('test-room');
         this.callbacks = [];
         this.init();
@@ -26,7 +27,13 @@ class State {
         const snapshot = await this.ref.get();
         this.callbacks.forEach(cb => {
             cb(snapshot.data().boardPosition);
-        })
+        });
+        this.ref.onSnapshot(snapshot => {
+            const boardPosition = snapshot.data().boardPosition;
+            this.callbacks.forEach(cb => {
+                cb(snapshot.data().boardPosition);
+            });
+        });
     }
 
     onBoardRotate(callback) {
@@ -40,10 +47,6 @@ class State {
         let newPosition = currentPosition + offset;
         await this.ref.update({
             boardPosition: newPosition
-        });
-
-        this.callbacks.forEach(callback => {
-            callback(newPosition);
         });
     }
 

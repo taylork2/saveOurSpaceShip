@@ -3,17 +3,26 @@
     window.requestAnimationFrame = requestAnimationFrame;
 })();
 
+import { maps } from './map';
+
 const UP = 38;
 const LEFT = 37;
 const SPACE = 32;
 const RIGHT = 39;
 
+<<<<<<< HEAD
 var orientation = 3*Math.PI/2; 
  
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
     width = 500,
     height = 500,
+=======
+var canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d"),
+    width = 1000,
+    height = 1000,
+>>>>>>> 39c23526a80dbc29cd974219bc393d536ae59a7c
     player = {    
 	      height: width/50,
 	      x : 5,
@@ -104,7 +113,12 @@ function update(){
     		player.jumping = false;
     }
  
+<<<<<<< HEAD
   	ctx.clearRect(0,0,width,height);
+=======
+    ctx.clearRect(0, 0, width, height);
+    drawMap(maps[3], ctx);  
+>>>>>>> 39c23526a80dbc29cd974219bc393d536ae59a7c
     ctx.fillStyle = "red";
   	ctx.fillRect(player.x, player.y, player.width, player.height);
  
@@ -134,6 +148,16 @@ document.body.addEventListener("keyup", function (e) {
     }
     keys[e.keyCode] = false;
 });
+
+function drawMap(level, ctx) {
+    ctx.fillStyle = "black";
+    level.blocks.forEach(part => {
+        ctx.fillRect(part.x, part.y, part.width, part.height);
+    });
+    const goal = level.goal;
+    ctx.fillStyle = 'green';
+    ctx.fillRect(goal.x, goal.y, goal.width, goal.height);
+}
  
 window.addEventListener("load",function(){
     update();
