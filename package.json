@@ -4,7 +4,9 @@
   "description": "Global Game Jam 2018 Game",
   "main": "index.js",
   "scripts": {
-    "start": "http-server ."
+    "start": "concurrently 'http-server .' 'npm run watch'",
+    "build": "rollup --output.format iife -o dist/index.js js/index.js",
+    "watch": "npm run build -- --watch"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,8 @@
   },
   "homepage": "https://github.com/taylork2/saveOurSpaceShip#readme",
   "devDependencies": {
-    "http-server": "^0.11.1"
+    "concurrently": "^3.5.1",
+    "http-server": "^0.11.1",
+    "rollup": "^0.55.1"
   }
 }
