@@ -1,0 +1,22 @@
+{
+  "name": "saveourspaceship",
+  "version": "1.0.0",
+  "description": "Global Game Jam 2018 Game",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taylork2/saveOurSpaceShip.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taylork2/saveOurSpaceShip/issues"
+  },
+  "homepage": "https://github.com/taylork2/saveOurSpaceShip#readme",
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  }
+}
