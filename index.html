@@ -11,8 +11,10 @@
 		#canvas{			
 			z-index:1; 
 			background:white; 
-			width:75vh; 
-			height: 75vh;
+			width: 500px; 
+			height: 500px;
+			border: 1px solid #000;
+			border-top-color: red;
 			transition: transform 1000ms;
 		}
 		#change-room {
@@ -47,7 +49,7 @@
 		<button id="rotate-right">Rotate Right</button>
 	</main>
 	<main id="controller">
-		<canvas id="canvas" style="border:1px solid #000"></canvas>
+		<canvas id="canvas"></canvas>
 	</main>
 	<dialog>
 		<h2>Do you have a room ID?</h2>
