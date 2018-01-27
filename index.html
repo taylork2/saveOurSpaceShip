@@ -11,8 +11,8 @@
 		#canvas{			
 			z-index:1; 
 			background:white; 
-			width:75%; 
-			height: 75%;
+			width:75vh; 
+			height: 75vh;
 		}
 		#change-room {
 			position: fixed;
@@ -51,6 +51,11 @@
 	<dialog>
 		<h2>Do you have a room ID?</h2>
 		ID: <input type="text"/>
+		<h2>What is your role?</h2>
+		Role: <select id="roles">
+				<option value="control">Control Panel</option>
+				<option value="deck">On Deck</option>
+			</select>
 		<button>Join</button>
 	</dialog>
 	<button id="change-room">Change Room</button>

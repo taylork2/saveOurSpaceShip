@@ -64,6 +64,17 @@ class State {
         this.update();
     }
 
+    getRole() {
+        console.log('your role is', this.state.role);
+        return this.state.role;
+    }
+
+    setRole(role){
+        this.state.role = role;
+        console.log('role set to', role);
+        this.update();
+    }
+
     update() {
         localStorage.setItem('state', JSON.stringify(this.state));
     }

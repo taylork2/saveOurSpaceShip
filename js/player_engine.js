@@ -10,21 +10,21 @@ const RIGHT = 39;
  
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
-    width = window.innerWidth - 100,
-    height = window.innerHeight - 100,
-    player = {
+    width = window.innerHeight - 100,
+    height = window.innerWidth - 100,
+    player = {    
+      height: 50,
       x : width/2,
       y : height - 5,
       width : 50,
-    height: 50,
-      speed: 3,
+      speed: 10,
       velX: 0,
       velY: 0,
       jumping: false
     },
     keys = [],
     friction = 0.8,
-    gravity = 0.2;
+    gravity = 0.7;
  
 canvas.width = width;
 canvas.height = height;

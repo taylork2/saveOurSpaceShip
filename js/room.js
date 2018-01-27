@@ -8,6 +8,7 @@ export function initializeRoom(state) {
 
     changeRoomButton.addEventListener('click', () => {
         state.setRoom(null);
+        state.setRole(null);
         dialog.open = true;
     });
 
@@ -21,6 +22,8 @@ export function initializeRoom(state) {
 
     button.addEventListener('click', () => {
         state.setRoom(input.value);
+        var player_role = document.getElementById("roles");
+        state.setRole(player_role.options[player_role.selectedIndex].value);
         document.title = `Room: ${input.value}`;
         controller.style.display = 'flex';
         dialog.open = false;
