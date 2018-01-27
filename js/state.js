@@ -17,6 +17,7 @@ class State {
             localStorage.setItem('state', '{}');
         }
         this.state = JSON.parse(localStorage.getItem('state')) || {};
+        console.log(this.state);
         this.ref = firestore.collection('rooms').doc('test-room');
         this.callbacks = [];
         this.init();
