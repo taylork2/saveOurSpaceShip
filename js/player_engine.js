@@ -2,6 +2,11 @@
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
     window.requestAnimationFrame = requestAnimationFrame;
 })();
+
+const UP = 38;
+const LEFT = 37;
+const SPACE = 32;
+const RIGHT = 38;
  
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
@@ -10,8 +15,8 @@ var canvas = document.getElementById("canvas"),
     player = {
       x : width/2,
       y : height - 5,
-      width : 5,
-      height : 5,
+      width : 50,
+    height: 50,
       speed: 3,
       velX: 0,
       velY: 0,
@@ -65,17 +70,33 @@ function update(){
     }
  
   ctx.clearRect(0,0,width,height);
-  ctx.fillStyle = "red";
+    ctx.fillStyle = "red";
   ctx.fillRect(player.x, player.y, player.width, player.height);
  
   requestAnimationFrame(update);
 }
  
-document.body.addEventListener("keydown", function(e) {
+document.body.addEventListener("keydown", function (e) {
+    if (
+        e.keyCode === UP ||
+        e.keyCode === SPACE ||
+        e.keyCode === LEFT ||
+        e.keyCode === RIGHT
+    ) {
+        e.preventDefault();
+    }
     keys[e.keyCode] = true;
 });
  
-document.body.addEventListener("keyup", function(e) {
+document.body.addEventListener("keyup", function (e) {
+    if (
+        e.keyCode === UP ||
+        e.keyCode === SPACE ||
+        e.keyCode === LEFT ||
+        e.keyCode === RIGHT
+    ) {
+        e.preventDefault();
+    }
     keys[e.keyCode] = false;
 });
  
