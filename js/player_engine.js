@@ -72,7 +72,7 @@ function update(){
     }
  
     ctx.clearRect(0, 0, width, height);
-    drawMap(maps[1], ctx);  
+    drawMap(maps[3], ctx);  
     ctx.fillStyle = "red";
   ctx.fillRect(player.x, player.y, player.width, player.height);
  
