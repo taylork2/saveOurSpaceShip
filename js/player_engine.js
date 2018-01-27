@@ -3,17 +3,17 @@
     window.requestAnimationFrame = requestAnimationFrame;
 })();
 
+import { maps } from './map';
+
 const UP = 38;
 const LEFT = 37;
 const SPACE = 32;
 const RIGHT = 39;
 
-console.log('hi');
- 
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
-    width = window.innerHeight - 100,
-    height = window.innerWidth - 100,
+    width = 1000,
+    height = 1000,
     player = {    
       height: 50,
       x : width/2,
@@ -71,7 +71,8 @@ function update(){
         player.jumping = false;
     }
  
-  ctx.clearRect(0,0,width,height);
+    ctx.clearRect(0, 0, width, height);
+    drawMap(maps[0], ctx);  
     ctx.fillStyle = "red";
   ctx.fillRect(player.x, player.y, player.width, player.height);
  
@@ -101,6 +102,16 @@ document.body.addEventListener("keyup", function (e) {
     }
     keys[e.keyCode] = false;
 });
+
+function drawMap(level, ctx) {
+    ctx.fillStyle = "black";
+    level.blocks.forEach(part => {
+        ctx.fillRect(part.x, part.y, part.width, part.height);
+    });
+    const goal = level.goal;
+    ctx.fillStyle = 'green';
+    ctx.fillRect(goal.x, goal.y, goal.width, goal.height);
+}
  
 window.addEventListener("load",function(){
     update();
