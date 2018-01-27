@@ -1,0 +1,4 @@
+-background ship 
+-background control panel 
+-control panel buttons (rotate) 
+-player in platformer  
