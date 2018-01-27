@@ -5,8 +5,8 @@
  
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
-    width = 500,
-    height = 200,
+    width = window.innerWidth,
+    height = window.innerHeight,
     player = {
       x : width/2,
       y : height - 5,
