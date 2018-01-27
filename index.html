@@ -14,16 +14,37 @@
 			width:75%; 
 			height: 75%;
 		}
+		#change-room {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+		}
+		dialog {
+			position: fixed;
+			top: 40%;
+		}
+		#controller {
+			display: none;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+		}
 	</style>
 </head>
 
 <body>
-	<canvas id="canvas" style="border:1px solid #000"></canvas>
+	<main id="navigator">
+
+	</main>
+	<main id="controller">
+		<canvas id="canvas" style="border:1px solid #000"></canvas>
+	</main>
 	<dialog>
 		<h2>Do you have a room ID?</h2>
 		ID: <input type="text"/>
 		<button>Join</button>
 	</dialog>
+	<button id="change-room">Change Room</button>
 </body>
 
 <script src='dist/index.js'></script>

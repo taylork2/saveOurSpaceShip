@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently 'http-server .' 'npm run watch'",
-    "build": "rollup --output.format iife -o dist/index.js js/index.js",
+    "build": "rollup --output.format umd -o dist/index.js js/index.js",
     "watch": "npm run build -- --watch"
   },
   "repository": {
