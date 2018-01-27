@@ -6,7 +6,7 @@
 const UP = 38;
 const LEFT = 37;
 const SPACE = 32;
-const RIGHT = 38;
+const RIGHT = 39;
  
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
@@ -31,20 +31,20 @@ canvas.height = height;
  
 function update(){
   // check keys
-    if (keys[38] || keys[32]) {
+    if (keys[SPACE] || keys[UP]) {
         // up arrow or space
       if(!player.jumping){
        player.jumping = true;
        player.velY = -player.speed*2;
       }
     }
-    if (keys[39]) {
+    if (keys[RIGHT]) {
         // right arrow
         if (player.velX < player.speed) {             
             player.velX++;         
          }     
     }     
-    if (keys[37]) {         
+    if (keys[LEFT]) {         
         // left arrow         
         if (player.velX > -player.speed) {
             player.velX--;
