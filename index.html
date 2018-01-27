@@ -19,6 +19,16 @@
 			bottom: 0;
 			left: 0;
 		}
+		dialog {
+			position: fixed;
+			top: 40%;
+		}
+		#controller {
+			display: none;
+			height: 100vh;
+			align-items: center;
+			justify-content: center;
+		}
 	</style>
 </head>
 
@@ -27,9 +37,8 @@
 
 	</main>
 	<main id="controller">
-
+		<canvas id="canvas" style="border:1px solid #000"></canvas>
 	</main>
-	<canvas id="canvas" style="border:1px solid #000"></canvas>
 	<dialog>
 		<h2>Do you have a room ID?</h2>
 		ID: <input type="text"/>
