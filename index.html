@@ -1,11 +1,25 @@
 <!doctype html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Save Our Space Ship</title>
+    <style>
+		body{
+			margin: 0;
+			top:0;
+		}
+		#game{			
+			z-index:1; 
+			background:gray; 
+			width:100%; 
+			height: 100%;
+		}
+	</style>
 </head>
+
 <body>
-	<canvas id="canvas" width=100% height=100%></canvas>
+	<script src='js/player_engine.js'></script>
+	<canvas id="canvas"></canvas>
 </body>
-<script src='js/player_engine.js'></script>
 
 </html>
