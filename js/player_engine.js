@@ -7,6 +7,8 @@ const UP = 38;
 const LEFT = 37;
 const SPACE = 32;
 const RIGHT = 39;
+
+console.log('hi');
  
 var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d"),
