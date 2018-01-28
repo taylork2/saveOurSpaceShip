@@ -24,14 +24,44 @@ export function start(game) {
     });
     game.addPlayer(player);
 
-    const ground = Bodies.rectangle(500, 975, 1000, 50, {
-        isStatic: true
+    const grounds = [
+        {
+            x: 500,
+            y: 975,
+            w: 1000,
+            h: 50
+        },
+        {
+            x: 975,
+            y: 500,
+            w: 50,
+            h: 1000
+        },
+        {
+            x: 500,
+            y: 25,
+            w: 1000,
+            h: 50
+        },
+        {
+            x: 25,
+            y: 500,
+            w: 50,
+            h: 1000
+        },
+    ].map(({ x, y, w, h }) => {
+        return Bodies.rectangle(x, y, w, h, {
+            isStatic: true
+        });
     });
-    game.add(ground);
+
+    grounds.forEach(ground => {
+        game.add(ground);
+    });
     const victory = isVictorious(player);
 
     game.onTick(() => {
-        jump(player, ground);
+        jump(player, grounds[game.orientation]);
         moveLeft(player);
         moveRight(player);
     });
@@ -42,29 +72,86 @@ function jump(player, ground) {
     if (isPressed(Keys.SPACE) || isPressed(Keys.UP)) {
         // up arrow or space
         if (!isJumping(player, ground)) {
-            Body.setVelocity(player, {
-                y: -10,
-                x: player.velocity.x
-            });
+            let velocity;
+            if (game.orientation === 0) {
+                velocity = {
+                    x: player.velocity.x,
+                    y: -10,
+                };
+            } else if (game.orientation === 1) {
+                velocity = {
+                    x: -10,
+                    y: player.velocity.y,
+                };
+            } else if (game.orientation === 2) {
+                velocity = {
+                    x: player.velocity.x,
+                    y: 10,
+                };
+            } else if (game.orientation === 3) {
+                velocity = {
+                    x: 10,
+                    y: player.velocity.y,
+                };
+            }
+            Body.setVelocity(player, velocity);
         }
     }
 }
 
 function moveLeft(player) {
     if (isPressed(Keys.LEFT)) {
-        Body.setVelocity(player, {
-            x: -10,
-            y: player.velocity.y,
-        });
+        let velocity;
+        if (game.orientation === 0) {
+            velocity = {
+                x: -10,
+                y: player.velocity.y,
+            };
+        } else if (game.orientation === 1) {
+            velocity = {
+                x: player.velocity.x,
+                y: 10,
+            };
+        } else if (game.orientation === 2) {
+            velocity = {
+                x: 10,
+                y: player.velocity.y,
+            };
+        } else if (game.orientation === 3) {
+            velocity = {
+                x: player.velocity.x,
+                y: -10,
+            };
+        }
+        Body.setVelocity(player, velocity);
     }
 }
 
 function moveRight(player) {
     if (isPressed(Keys.RIGHT)) {
-        Body.setVelocity(player, {
-            x: 10,
-            y: player.velocity.y,
-        });
+        let velocity;
+        if (game.orientation === 0) {
+            velocity = {
+                x: 10,
+                y: player.velocity.y,
+            };
+        } else if (game.orientation === 1) {
+            velocity = {
+                x: player.velocity.x,
+                y: -10,
+            };
+        } else if (game.orientation === 2) {
+            velocity = {
+                x: -10,
+                y: player.velocity.y,
+            };
+        } else if (game.orientation === 3) {
+            velocity = {
+                x: player.velocity.x,
+                y: 10,
+            };
+        }
+        Body.setVelocity(player, velocity);
     }
 }
 

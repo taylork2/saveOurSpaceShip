@@ -14,6 +14,7 @@ const {
 export class Game {
     constructor(state) {
         window['game'] = this;
+        this.state = state;
         this.callbacks = [];
         this.bodies = [];
         this.world = createWorld();
@@ -24,7 +25,6 @@ export class Game {
     }
 
     add(body, isPlayer) {
-        console.log(body);
         this.bodies.push(body);
         World.add(this.world, [body]);
     }
@@ -33,6 +33,10 @@ export class Game {
         this.bodies.forEach(body => {
             Composite.remove(this.world, body);
         });
+    }
+
+    setOrientation(orientation) {
+        this.orientation = orientation;
     }
 
     addPlayer(player) {

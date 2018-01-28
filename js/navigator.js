@@ -13,6 +13,7 @@ export function initializeNavigator(state, game) {
         while (pos > 3 || pos < 0) {
             pos -= 4;
         }
+        game.setOrientation(pos);
         if (pos === 0) {
             game.world.gravity = {
                 x: 0,
