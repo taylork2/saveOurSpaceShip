@@ -200,7 +200,11 @@ function moveRight(player) {
 }
 
 function isJumping(player, ground, blocks) {
-    return Query.region([ground, ...blocks], player.bounds).length === 0;
+    return Query.region([ground, ...blocks], player.bounds)
+    .filter(block => {
+        return player.bounds.min.y > block.bounds.max.y - 2
+    })
+    .length === 0;
 }
 
 function isVictorious(player, goal) {
