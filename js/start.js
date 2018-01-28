@@ -209,5 +209,5 @@ function isVictorious(player, goal) {
 
 let level = 0;
 export function begin(game) {
-    start(game, maps[0]);
+    start(game, maps[level]);
 }
