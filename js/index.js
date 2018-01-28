@@ -1,7 +1,14 @@
-import './player_engine';
+import 'matter-js';
+
 import { state } from './state';
 import { initializeNavigator } from './navigator';
 import { initializeRoom } from './room';
+import { Game } from './game/game';
+import { start } from './start';
 
-initializeNavigator(state);
+
 initializeRoom(state);
+const game = new Game(state);
+initializeNavigator(state, game);
+start(game);
+
