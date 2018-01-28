@@ -58,24 +58,7 @@ var mapnum = 1;
 var orientation = 3*Math.PI/2;
 
 function isJumping(player) {
-    return Query.region([player], Bounds.create(Vertices.create([
-        {
-            x: 0,
-            y: 1000
-        },
-        {
-            x: 60,
-            y: 1000
-        },
-        {
-            x: 0,
-            y: 0
-        },
-        {
-            x: 60,
-            y: 0
-        }
-    ]))).length === 0;
+    return Query.region([player], ground.bounds).length === 0;
 }
 
 function isVictorious(player) {
