@@ -202,7 +202,15 @@ function moveRight(player) {
 function isJumping(player, ground, blocks) {
     return Query.region([ground, ...blocks], player.bounds)
     .filter(block => {
-        return player.bounds.min.y > block.bounds.max.y - 2
+        if (game.orientation === 0) {
+            return player.bounds.max.y <= block.bounds.min.y + 1
+        } else if (game.orientation === 1) {
+            return player.bounds.max.x >= block.bounds.min.x - 1
+        } else if (game.orientation === 2) {
+            return player.bounds.min.y >= block.bounds.max.y - 1
+        } else if (game.orientation === 3) {
+            return player.bounds.min.x >= block.bounds.max.x - 1
+        }
     })
     .length === 0;
 }
