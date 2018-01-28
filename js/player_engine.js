@@ -62,7 +62,7 @@ function isJumping(player) {
 }
 
 function isVictorious(player) {
-    Query.region([player], Bounds.create(Vertices.create([
+    return Query.region([player], Bounds.create(Vertices.create([
         {
             x: 60,
             y: 950
@@ -79,7 +79,7 @@ function isVictorious(player) {
             x: 160,
             y: 1000
         }
-    ]))).includes(player)
+    ]))).length === 1;
 }
 
 function update() {
@@ -136,6 +136,10 @@ document.body.addEventListener("keyup", function (e) {
     keys[e.keyCode] = false;
 });
 
+window.addEventListener("load", function () {
+    update();
+});
+
 // function drawMap(level, ctx) {
 //     ctx.fillStyle = "black";
 //     level.blocks.forEach(part => {
@@ -145,7 +149,3 @@ document.body.addEventListener("keyup", function (e) {
 //     ctx.fillStyle = 'green';
 //     ctx.fillRect(goal.x, goal.y, goal.width, goal.height);
 // }
- 
-window.addEventListener("load",function(){
-    update();
-});
