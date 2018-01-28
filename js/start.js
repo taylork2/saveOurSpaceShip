@@ -13,9 +13,7 @@ var mapnum = 1;
 
 var orientation = 3 * Math.PI / 2;
 
-export function start(game) {
-    const map = maps[0];
-
+function start(game, map) {
     const {
         player,
         blocks,
@@ -56,13 +54,28 @@ export function start(game) {
     grounds.forEach(ground => {
         game.add(ground);
     });
-    const victory = isVictorious(player);
-
     game.onTick(() => {
-        jump(player, grounds[game.orientation]);
+        jump(player, grounds[game.orientation], blocks);
         moveLeft(player);
         moveRight(player);
     });
+    const dialog = document.getElementById('victory');
+    dialog.querySelector('button').addEventListener('click', () => {
+        nextLevel();
+        dialog.open = false;
+    });
+
+    game.onTick(() => {
+        const victory = isVictorious(player, goal);
+        if (victory) {
+            dialog.open = true;
+        }
+    })
+}
+
+function nextLevel() {
+    game.removeAll();
+    start(game, maps[++level]);
 }
 
 function drawMap(map) {
@@ -83,8 +96,6 @@ function drawMap(map) {
         game.add(block);
     });
 
-    console.log(map.goal);
-
     const goal = Bodies.rectangle(map.goal.x, map.goal.y, map.goal.width, map.goal.height, {
         isStatic: true,
         render: {
@@ -100,11 +111,11 @@ function drawMap(map) {
     }
 }
 
-function jump(player, ground) {
+function jump(player, ground, blocks) {
 
     if (isPressed(Keys.SPACE) || isPressed(Keys.UP)) {
         // up arrow or space
-        if (!isJumping(player, ground)) {
+        if (!isJumping(player, ground, blocks)) {
             let velocity;
             if (game.orientation === 0) {
                 velocity = {
@@ -188,27 +199,15 @@ function moveRight(player) {
     }
 }
 
-function isJumping(player, ground) {
-    return Query.region([player], ground.bounds).length === 0;
+function isJumping(player, ground, blocks) {
+    return Query.region([ground, ...blocks], player.bounds).length === 0;
 }
 
-function isVictorious(player) {
-    return Query.region([player], Bounds.create(Vertices.create([
-        {
-            x: 60,
-            y: 950
-        },
-        {
-            x: 160,
-            y: 950
-        },
-        {
-            x: 60,
-            y: 1000
-        },
-        {
-            x: 160,
-            y: 1000
-        }
-    ]))).length === 1;
+function isVictorious(player, goal) {
+    return Query.region([player], goal.bounds).length === 1;
+}
+
+let level = 0;
+export function begin(game) {
+    start(game, maps[0]);
 }

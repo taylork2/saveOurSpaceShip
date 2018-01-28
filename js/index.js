@@ -4,11 +4,11 @@ import { state } from './state';
 import { initializeNavigator } from './navigator';
 import { initializeRoom } from './room';
 import { Game } from './game/game';
-import { start } from './start';
+import { begin } from './start';
 
 
 initializeRoom(state);
 const game = new Game(state);
 initializeNavigator(state, game);
-start(game);
+begin(game);
 

@@ -28,6 +28,10 @@ export const maps = [
     },
     // Level 2
     {
+        start: {
+            x: 100,
+            y: 900
+        },
         blocks: [
             {
                 x: 0,
@@ -67,14 +71,18 @@ export const maps = [
             }
         ],
         goal: {
-            x: 990,
+            x: 925,
             y: 900,
-            width: 10,
+            width: 50,
             height: 100
         }
     },
     // Level 3
     {
+        start: {
+            x: 100,
+            y: 900
+        },
         blocks: [
             {
                 x: 0,
@@ -98,6 +106,10 @@ export const maps = [
     },
     // Level 4
     {
+        start: {
+            x: 100,
+            y: 900
+        },
         blocks: [
             {
                 x: 0,
