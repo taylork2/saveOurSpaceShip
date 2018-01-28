@@ -14,15 +14,13 @@ var mapnum = 1;
 var orientation = 3 * Math.PI / 2;
 
 export function start(game) {
+    const map = maps[0];
 
-    const player = Bodies.rectangle(300, 100, 50, 50, {
-        render: {
-            fillStyle: 'red',
-            strokeStyle: 'blue',
-            lineWidth: 3
-        }
-    });
-    game.addPlayer(player);
+    const {
+        player,
+        blocks,
+        goal
+    } = drawMap(map);
 
     const grounds = [
         {
@@ -65,6 +63,41 @@ export function start(game) {
         moveLeft(player);
         moveRight(player);
     });
+}
+
+function drawMap(map) {
+    const player = Bodies.rectangle(map.start.x, map.start.y, 50, 50, {
+        render: {
+            fillStyle: 'red'
+        }
+    });
+    game.addPlayer(player);
+
+    const blocks = map.blocks.map(block => {
+        return Bodies.rectangle(block.x, block.y, block.width, block.height, {
+            isStatic: true
+        });
+    });
+
+    blocks.forEach((block) => {
+        game.add(block);
+    });
+
+    console.log(map.goal);
+
+    const goal = Bodies.rectangle(map.goal.x, map.goal.y, map.goal.width, map.goal.height, {
+        isStatic: true,
+        render: {
+            fillStyle: 'green'
+        }
+    });
+    game.add(goal);
+
+    return {
+        player,
+        blocks,
+        goal
+    }
 }
 
 function jump(player, ground) {

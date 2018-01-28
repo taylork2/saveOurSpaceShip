@@ -2,42 +2,28 @@ export const maps = [
     // Level 1
     {
         blocks: [
-            // {
-            //     x:0,
-            //     y:0,
-            //     width: 1000,
-            //     height: 1
-            // }, 
-            // {
-            //     x:0,
-            //     y:0,
-            //     width: 1,
-            //     height: 1000
-            // },
-            // {
-            //     x:1000,
-            //     y:1000,
-            //     width: 1,
-            //     height: 1000
-            // },
-            // {
-            //     x:1000,
-            //     y:1000,
-            //     width: 1,
-            //     height: 1000
-            // },
             {
-                x: 0,
-                y: 990,
-                width: 1000,
-                height: 10
+                x: 225,
+                y: 1000,
+                width: 50,
+                height: 500
+            },
+            {
+                x: 775,
+                y: 250,
+                width: 50,
+                height: 500
             }
         ],
+        start: {
+            x: 100,
+            y: 900
+        },
         goal: {
-            x: 990,
-            y: 900,
-            width: 10,
-            height: 100
+            x: 900,
+            y: 75,
+            width: 200,
+            height: 50
         }
     },
     // Level 2
@@ -133,10 +119,10 @@ export const maps = [
             }
         ],
         goal: {
-            x: 0,
-            y: 990,
-            width: 100,
-            height: 10
+            x: 950,
+            y: 100,
+            width: 50,
+            height: 200
         }
     }
 ];
